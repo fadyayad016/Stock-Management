@@ -1,0 +1,333 @@
+<div class="container">
+    <mat-nav-list>
+    
+        <!-- <img src="../../assets/images/icons.png" alt="storeLogo" class="logo rounded mx-auto d-block"> -->
+        <h3>Logan Company Dashbord</h3>
+        <mat-divider></mat-divider>
+        <span class="row">
+            <a mat-list-item routerLink="/home" routerLinkActive="list-item-active">
+              <span class="col-2">
+                <mat-icon>home</mat-icon>
+              </span> 
+              <span class="col-10">
+                dashboard
+              </span>
+            </a>
+        </span>
+        <span class="row">
+            <a  mat-list-item (click)="toogleCustomerList()" routerLinkActive="list-item-active">
+                <span class="col-2 ">
+                    <mat-icon>account_box</mat-icon>
+                </span>
+                <span class="col-8 d-flex ">
+                    Customer Manage
+                </span>
+    
+                <span class="col-2 d-flex justify-content-end" *ngIf="toogleListCustomer">
+                    <mat-icon class="arrowIcon"  >keyboard_arrow_right</mat-icon>
+                </span>
+               <span class="col-2 d-flex justify-content-end" *ngIf="!toogleListCustomer">
+                <mat-icon class="arrowIcon"  >keyboard_arrow_down</mat-icon>
+                
+               </span>
+             
+            </a>
+           </span>
+            <mat-nav-list [class.d-none]=toogleListCustomer>
+                <span class="row ">
+                    <a mat-list-item routerLink="/home/customer" routerLinkActive="list-item-active">
+                     <span class=" ms-4"> Customers </span>
+                     </a>
+                </span>
+                <span class="row ">
+                    <a mat-list-item routerLink="/home/customer/customerType" routerLinkActive="list-item-active">
+                     <span class=" ms-4"> Classfication </span>
+                     </a>
+                </span>
+                <span class="row ">
+                    <a mat-list-item routerLink="/home/customer/showDiscount" routerLinkActive="list-item-active">
+                     <span class=" ms-4"> Discount </span>
+                     </a>
+                </span>
+               
+            </mat-nav-list>
+    
+        <span class="row">
+            <a mat-list-item routerLink="home/stock/showSupplier" routerLinkActive="list-item-active">
+               <span class="col-2">
+                <mat-icon>local_atm</mat-icon>
+               </span> 
+               <span class="col-10">
+                supplier
+               </span>
+            </a>
+        </span>
+        <span class="row">
+            <a mat-list-item routerLink="/home/employee" routerLinkActive="list-item-active">
+               <span class="col-2">
+                <mat-icon>people</mat-icon>
+               </span> 
+               <span class="col-10">
+                Employee
+               </span>
+            </a>
+        </span>
+        <span class="row">
+            
+            <a  mat-list-item (click)="toogleStocksList()" routerLinkActive="list-item-active">
+                <span class="col-2 ">
+                    <mat-icon>business_center</mat-icon>
+                </span>
+                <span class="col-8 d-flex ">
+                    Manage Stocks
+                </span>
+    
+                <span class="col-2 d-flex justify-content-end" *ngIf="toogleListStocks">
+                    <mat-icon class="arrowIcon"  >keyboard_arrow_right</mat-icon>
+                </span>
+               <span class="col-2 d-flex justify-content-end" *ngIf="!toogleListStocks">
+                <mat-icon class="arrowIcon"  >keyboard_arrow_down</mat-icon>
+                
+               </span>
+             
+            </a>
+           </span>
+            <mat-nav-list [class.d-none]=toogleListStocks>
+                <span class="row ">
+                    <a mat-list-item routerLink="/home/stock" routerLinkActive="list-item-active">
+                     <span class=" ms-4"> Stock </span>
+                     </a>
+                </span>
+                <span class="row ">
+                    <a mat-list-item routerLink="home/stock/showStockProduct" routerLinkActive="list-item-active">
+                     <span class=" ms-4"> Stock product </span>
+                     </a>
+                </span>
+                <span class="row ">
+                    <a mat-list-item routerLink="/home/stock/showTransfer" routerLinkActive="list-item-active">
+                     <span class=" ms-4"> Transformation </span>
+                     </a>
+                </span>
+                <span class="row ">
+                    <a mat-list-item routerLink="/home/stock/showJob" routerLinkActive="list-item-active">
+                     <span class=" ms-4"> Jobs </span>
+                     </a>
+                </span>
+                
+               
+            </mat-nav-list>
+    
+       <span class="row">
+        <a  mat-list-item  (click)="toogleProductList()" routerLinkActive="list-item-active">
+            <span class="col-2 ">
+                <mat-icon>local_parking</mat-icon>
+            </span>
+            <span class="col-8 d-flex ">
+                Products
+            </span>
+
+            <span class="col-2 d-flex justify-content-end" *ngIf="toogleListProduct">
+                <mat-icon class="arrowIcon"  >keyboard_arrow_right</mat-icon>
+            </span>
+           <span class="col-2 d-flex justify-content-end" *ngIf="!toogleListProduct">
+            <mat-icon class="arrowIcon"  >keyboard_arrow_down</mat-icon>
+            
+           </span>
+         
+        </a>
+       </span>
+        <mat-nav-list [class.d-none]=toogleListProduct>
+            <span class="row ">
+                <a mat-list-item routerLink="home/product/showCategory" routerLinkActive="list-item-active">
+                 <span class=" ms-4"> Category </span>
+                 </a>
+            </span>
+            <span class="row ">
+                <a mat-list-item routerLink="/home/product/showProduct" routerLinkActive="list-item-active">
+                 <span class=" ms-4"> Product </span>
+                 </a>
+            </span>
+            <span class="row ">
+                <a mat-list-item routerLink="/home/product/showExpProduct" routerLinkActive="list-item-active">
+                 <span class=" ms-4"> Damged Product </span>
+                 </a>
+            </span>
+        </mat-nav-list>
+
+       <span class="row">
+        <a mat-list-item  (click)="tooglepurshaseList()" routerLinkActive="list-item-active">
+            <span class="col-2">
+                <mat-icon>child_friendly</mat-icon>
+            </span>
+            <span class="col-8">Purshases manage</span>
+            <span class="col-2" *ngIf="toogleListPurshase" >
+                <mat-icon class="arrowIcon" >keyboard_arrow_right</mat-icon>
+            </span>
+            <span class="col-2" *ngIf="!toogleListPurshase">
+                <mat-icon class="arrowIcon"  >keyboard_arrow_down</mat-icon>
+            </span>
+            
+         
+        </a>
+    </span>
+        <mat-nav-list [class.d-none]=toogleListPurshase>
+            <span class="row ">
+                <a mat-list-item routerLink="home/purchase/add"  mat-list-item routerLinkActive="list-item-active">
+                 <span class=" ms-4"> Add Bill </span>
+                 </a>
+            </span>
+            <span class="row ">
+                <a mat-list-item routerLink="/home/purchase/addRetBill" routerLinkActive="list-item-active">
+                 <span class=" ms-4"> Add Return Bill </span>
+                 </a>
+            </span>
+            <span class="row ">
+                <a mat-list-item routerLink="/home/product" routerLinkActive="list-item-active">
+                 <span class=" ms-4"> Product </span>
+                 </a>
+            </span>
+            <span class="row ">
+                <a mat-list-item routerLink="/s" routerLinkActive="list-item-active">
+                 <span class=" ms-4"> Damged Product </span>
+                 </a>
+            </span>
+        </mat-nav-list>
+        <span class="row">
+            <a mat-list-item  (click)="toogleExpenseList()" routerLinkActive="list-item-active">
+                <span class="col-2">
+                    <mat-icon>money</mat-icon>
+                </span>
+                <span class="col-8">Expense manage</span>
+                <span class="col-2" *ngIf="toogleListPurshase" >
+                    <mat-icon class="arrowIcon" >keyboard_arrow_right</mat-icon>
+                </span>
+                <span class="col-2" *ngIf="!toogleListPurshase">
+                    <mat-icon class="arrowIcon"  >keyboard_arrow_down</mat-icon>
+                </span>
+                
+             
+            </a>
+        </span>
+            <mat-nav-list [class.d-none]=toogleListExpense>
+                <span class="row ">
+                    <a mat-list-item routerLink="/home/expense" routerLinkActive="list-item-active">
+                     <span class=" ms-4"> Expense </span>
+                     </a>
+                </span>
+                <span class="row ">
+                    <a mat-list-item routerLink="/home/expense/showExpenseType" routerLinkActive="list-item-active">
+                     <span class=" ms-4"> Expense Type </span>
+                     </a>
+                </span>
+            </mat-nav-list>
+
+        <span class="row">
+            <a mat-list-item routerLink="/sd" (click)="toogleSalesList()" routerLinkActive="list-item-active">
+                <span class="col-2" >
+                    <mat-icon>local_grocery_store</mat-icon>
+                </span>
+                <span class="col-8">
+                    manage Sales
+                </span>
+    
+                <span class="col-2" *ngIf="toogleListSales" >
+                    <mat-icon class="arrowIcon" >keyboard_arrow_right</mat-icon>
+                </span>
+                <span class="col-2" *ngIf="!toogleListSales" >
+                    <mat-icon class="arrowIcon" >keyboard_arrow_down</mat-icon>
+                </span>
+                
+             
+            </a>
+        </span>
+        
+        <mat-nav-list [class.d-none]=toogleListSales>
+            <span class="row ">
+                <a mat-list-item routerLink="/home/sales" routerLinkActive="list-item-active">
+                 <span class=" ms-4"> Add Sale Bill </span>
+                 </a>
+            </span>
+            <span class="row ">
+                <a mat-list-item routerLink="/home/sale/addRetBill" routerLinkActive="list-item-active">
+                 <span class=" ms-4"> Add Return Bill </span>
+                 </a>
+            </span>
+            <span class="row ">
+                <a mat-list-item routerLink="/home/product" routerLinkActive="list-item-active">
+                 <span class=" ms-4"> Product </span>
+                 </a>
+            </span>
+            <span class="row ">
+                <a mat-list-item routerLink="/s" routerLinkActive="list-item-active">
+                 <span class=" ms-4"> Damged Product </span>
+                 </a>
+            </span>
+        </mat-nav-list>
+        <span class="row">
+            <a mat-list-item routerLink="/home/tax" routerLinkActive="list-item-active">
+               <span class="col-2">
+                <mat-icon>local_hospital</mat-icon>
+               </span> 
+               <span class="col-10">
+                Tax
+               </span>
+            </a>
+        </span>
+        <span class="row">
+            <a mat-list-item routerLink="/sd" (click)="toogleReportList()" routerLinkActive="list-item-active">
+                <span class="col-2" >
+                    <mat-icon>local_post_office</mat-icon>
+                </span>
+                <span class="col-8">
+                    Report
+                </span>
+    
+                <span class="col-2" *ngIf="toogleListSales" >
+                    <mat-icon class="arrowIcon" >keyboard_arrow_right</mat-icon>
+                </span>
+                <span class="col-2" *ngIf="!toogleListSales" >
+                    <mat-icon class="arrowIcon" >keyboard_arrow_down</mat-icon>
+                </span>
+                
+             
+            </a>
+        </span>
+        <mat-nav-list [class.d-none]=toogleListReport>
+            <span class="row ">
+                <a mat-list-item routerLink="home/report/purchaseBill" routerLinkActive="list-item-active">
+                 <span class=" ms-4"> Purchase Bill </span>
+                 </a>
+            </span>
+            <span class="row ">
+                <a mat-list-item routerLink="home/report/saleBill" routerLinkActive="list-item-active">
+                 <span class=" ms-4"> Sale Bill </span>
+                 </a>
+            </span>
+            <span class="row ">
+                <a mat-list-item routerLink="/s" routerLinkActive="list-item-active">
+                 <span class=" ms-4"> Report3 </span>
+                 </a>
+            </span>
+            <span class="row ">
+                <a mat-list-item routerLink="/s" routerLinkActive="list-item-active">
+                 <span class=" ms-4"> Report4 </span>
+                 </a>
+            </span>
+        </mat-nav-list>
+        <span class="row">
+            <a mat-list-item routerLink="/setting" routerLinkActive="list-item-active">
+              <span class="col-2">
+                <mat-icon>settings</mat-icon>
+              </span> 
+              <span class="col-10">
+                Setting
+              </span>
+            </a>
+        </span>
+        
+        
+       
+        
+</mat-nav-list>
+</div>
+

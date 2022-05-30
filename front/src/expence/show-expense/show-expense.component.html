@@ -1,0 +1,100 @@
+<!-- <div class="container-fluid pt-4">
+    <div class="d-flex justify-content-end">
+        <a routerLink="/home/stock/add" (click)="navigateToAddExpense()" class="btn btn-primary">add Expense
+            </a>
+    </div>
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="lg-1 col-md-2 col-sm-1" scope="col">Date</th>
+                    <th class="lg-1 col-md-2 col-sm-1" scope="col">notes</th>
+                    <th class="lg-1 col-md-2 col-sm-1" scope="col">Value</th>
+                    <th class="lg-1 col-md-1 col-sm-1" scope="col">Check Number </th>
+                    <th class="lg-1 col-md-1 col-sm-1" scope="col">Stock Name </th>
+                    <th class="lg-1 col-md-1 col-sm-1" scope="col">Employee Name </th>
+                    <th class="lg-1 col-md-1 col-sm-1" scope="col">Trader Type </th>
+                    <th class="lg-1 col-md-1 col-sm-1" scope="col">PaymentMethod Type </th>
+                    <th class="lg-2 col-md-2 col-sm-2"></th>
+                    <th class="lg-2 col-md-2 col-sm-2"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-active" *ngFor="let item of expenseList;let ind=index ">
+
+                    <td class="lg-1 col-md-1 col-sm-1">{{item.date}}</td>
+                    <td class="lg-1 col-md-1 col-sm-1">{{item.notes}}</td>
+                    <td class="lg-1 col-md-1 col-sm-1">{{item.value}}</td>
+                    <td class="lg-1 col-md-1 col-sm-1">{{item.checkNumber}}</td>
+                    <td class="lg-1 col-md-1 col-sm-1">{{stockNamesList[ind]}}</td>
+                    <td class="lg-1 col-md-1 col-sm-1">{{employeeNamesList[ind]}}</td>
+                    <td class="lg-1 col-md-1 col-sm-1">{{customerTypeNamesList[ind]}}</td>
+                    <td class="lg-1 col-md-1 col-sm-1">{{paymentMethodList[ind]}}</td>
+                    <td class="lg-2 col-md-2 col-sm-2"><a class="btn btn-success"
+                            (click)="NavigationToEditExpense(item.id)">edit</a></td>
+                    <td class="lg-2 col-md-2 col-sm-2"><a class="btn  btn-danger"
+                            (click)="deleteExpense(item.id)">delete</a></td>
+                    <td></td>
+                </tr>
+                <tr>
+            </tbody>
+        </table>
+    </div>
+</div> -->
+<!-- ['date','notes','value','checkNumber','stockName','employeeName','traderType','paymentMethodType','actions']; -->
+<div class="container-fluid pt-4">
+  <div class="d-flex justify-content-end mb-4">
+    <button class="btn btn-success rounded" (click)="navigateToAddExpense()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef=" let element">{{element.date|date:'mediumDate'}}</td>
+    </ng-container>
+    <ng-container matColumnDef="notes">
+      <th mat-header-cell *matHeaderCellDef>Notes</th>
+      <td mat-cell *matCellDef="let element">{{element.notes}}</td>
+    </ng-container>
+    <ng-container matColumnDef="value">
+      <th mat-header-cell *matHeaderCellDef>Value</th>
+      <td mat-cell *matCellDef="let element">{{element.value}}</td>
+    </ng-container>
+    <ng-container matColumnDef="checkNumber">
+      <th mat-header-cell *matHeaderCellDef>check Number</th>
+      <td mat-cell *matCellDef="let element">{{element.checkNumber}}</td>
+    </ng-container>
+    <ng-container matColumnDef="stockName">
+      <th mat-header-cell *matHeaderCellDef>stockName</th>
+      <td mat-cell *matCellDef="let element; let i = index">{{stockNamesList[i]}}</td>
+    </ng-container>
+    <ng-container matColumnDef="employeeName">
+      <th mat-header-cell *matHeaderCellDef>EmployeeName</th>
+      <td mat-cell *matCellDef="let element; let i = index">{{employeeNamesList[i]}}</td>
+    </ng-container>
+    <ng-container matColumnDef="expenseType">
+      <th mat-header-cell *matHeaderCellDef>Expense Type</th>
+      <td mat-cell *matCellDef="let element; let i = index">{{expenseTypeNamesList[i]}}</td>
+    </ng-container>
+    <ng-container matColumnDef="paymentMethodType">
+      <th mat-header-cell *matHeaderCellDef>PayM</th>
+      <td mat-cell *matCellDef="let element; let i = index">{{paymentMethodList[i]}}</td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button matTooltip="Click to Edit" class="iconbutton" color="primary"
+          (click)="NavigationToEditExpense(element.id)">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" color="warn"
+          (click)="deleteExpense(element.id)">
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
